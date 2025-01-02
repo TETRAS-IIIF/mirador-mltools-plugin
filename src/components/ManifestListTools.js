@@ -6,8 +6,8 @@ import CheckBoxOutlineBlank from '@mui/icons-material/CheckBoxOutlineBlank';
 
 const ManifestListTools = (
     {
-        active,
-        activeWindows,
+        active = false,
+        activeWindows = [],
         addWindow,
         manifestId,
         onDismissClick,
@@ -79,11 +79,6 @@ ManifestListTools.propTypes = {
         windowAddRemove: PropTypes.string,
         manifestRemove: PropTypes.string,
     }).isRequired,
-};
-
-ManifestListTools.defaultProps = {
-    active: false,
-    activeWindows: [],
 };
 
 export default ManifestListTools;

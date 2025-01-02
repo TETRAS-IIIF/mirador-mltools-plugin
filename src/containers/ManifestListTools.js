@@ -1,7 +1,7 @@
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withTranslation } from 'react-i18next';
-import { withStyles } from '@mui/styles'; // Use withStyles for legacy Material-UI support
+import { withStyles } from '@mui/styles';
 import * as actions from 'mirador/dist/es/src/state/actions';
 import { getWindowIds, getManifest, getWindowManifests } from 'mirador/dist/es/src/state/selectors';
 import ManifestListTools from '../components/ManifestListTools';
@@ -31,7 +31,6 @@ const mapDispatchToProps = {
   updateWorkspaceMosaicLayout: actions.updateWorkspaceMosaicLayout,
 };
 
-// Legacy Material-UI styling with withStyles
 const styles = (theme) => ({
   windowAddRemove: {
     position: 'absolute',
@@ -49,7 +48,6 @@ const styles = (theme) => ({
   },
 });
 
-// Enhance the component with HOCs
 const enhance = compose(
     withTranslation(),
     withStyles(styles),
