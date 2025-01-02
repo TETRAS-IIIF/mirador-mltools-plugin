@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Box, Button, Tooltip, Typography} from '@mui/material';
+import {Box, Button, Tooltip} from '@mui/material';
 import CheckBoxOutlined from '@mui/icons-material/CheckBoxOutlined';
 import CheckBoxOutlineBlank from '@mui/icons-material/CheckBoxOutlineBlank';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -9,16 +9,17 @@ const ManifestListTools = (
     {
         active = false,
         activeWindows = [],
+        adapter,
         addCheckBox,
         addWindow,
         manifestId,
-        onDismissClick,
+        manifest,
+        projectId,
         removeWindow,
         t,
         updateWorkspaceMosaicLayout,
         classes,
         removeResourceButton,
-        adapter,
     }) => {
     const addWindowHandler = () => {
         addWindow({ manifestId });
@@ -39,19 +40,37 @@ const ManifestListTools = (
     };
 
     const removeManifestHandler = () => {
-        const storageAdapter = adapter("tptp")
-        storageAdapter.delete();
-        activeWindows.forEach((windowId) => {
-            removeWindow(windowId);
-        });
-        /**
-         * Duplicate, see above
-         * */
-        if (activeWindows.length > 0) {
-            updateWorkspaceMosaicLayout();
+        // Initialize an empty array to hold canvas IDs
+        const canvasIds = [];
+        console.log(projectId);
+        // Iterate over the canvases in the `sequences` array
+        if (manifest.__jsonld && manifest.__jsonld.sequences) {
+            manifest.__jsonld.sequences.forEach(sequence => {
+                if (sequence.canvases) {
+                    sequence.canvases.forEach(canvas => {
+                        if (canvas["@id"]) {
+                            canvasIds.push(canvas["@id"]);
+                        }
+                    });
+                }
+            });
         }
-
-        onDismissClick(manifestId);
+        console.log('canvasIds',canvasIds);
+        for(const canvasId of canvasIds) {
+        const storageAdapter = adapter(canvasId, projectId)
+        storageAdapter.delete();
+        }
+        // activeWindows.forEach((windowId) => {
+        //     removeWindow(windowId);
+        // });
+        // /**
+        //  * Duplicate, see above
+        //  * */
+        // if (activeWindows.length > 0) {
+        //     updateWorkspaceMosaicLayout();
+        // }
+        //
+        // onDismissClick(manifestId);
     };
 
     return (
@@ -106,6 +125,7 @@ ManifestListTools.propTypes = {
     activeWindows: PropTypes.arrayOf(PropTypes.string),
     addCheckBox: PropTypes.bool.isRequired,
     adapter: PropTypes.any.isRequired,
+    manifest: PropTypes.any.isRequired,
     manifestId: PropTypes.string.isRequired,
     onDismissClick: PropTypes.func.isRequired,
     removeWindow: PropTypes.func.isRequired,

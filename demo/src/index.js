@@ -3,7 +3,7 @@ import manifestlistPlugins from '../../src';
 import LocalStorageAdapter from "./adapter/LocalStorageAdapter";
 
 const config = {
-  adapter:(canvasId) => new LocalStorageAdapter(`localStorage://?canvasId=${canvasId}`),
+  adapter:(canvasId,projectId) => new LocalStorageAdapter(`localStorage://?canvasId=${canvasId}`, projectId),
     id: 'demo',
   catalog: [{
     manifestId: 'https://iiif.harvardartmuseums.org/manifests/object/299843',
@@ -15,7 +15,8 @@ const config = {
     isWorkspaceAddVisible: true,
     addCheckBox:true,
     removeResourceButton: true,
-  }
+  },
+  projectId:1,
 };
 
 mirador.viewer(config, [...manifestlistPlugins]);

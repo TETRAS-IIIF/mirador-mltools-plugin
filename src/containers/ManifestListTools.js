@@ -3,7 +3,12 @@ import { connect } from 'react-redux';
 import { withTranslation } from 'react-i18next';
 import { withStyles } from '@mui/styles';
 import * as actions from 'mirador/dist/es/src/state/actions';
-import { getWindowIds, getManifest, getWindowManifests } from 'mirador/dist/es/src/state/selectors';
+import {
+  getWindowIds,
+  getManifest,
+  getWindowManifests,
+  getManifestoInstance,
+} from 'mirador/dist/es/src/state/selectors';
 import ManifestListTools from '../components/ManifestListTools';
 
 function mapStateToProps(state, { manifestId }) {
@@ -20,10 +25,12 @@ function mapStateToProps(state, { manifestId }) {
   return {
     active: getWindowManifests(state).includes(manifestId),
     activeWindows: activeWindowIds,
-    manifestId,
-    addCheckBox: state.workspace.addCheckBox,
-    removeResourceButton: state.workspace.removeResourceButton,
     adapter: state.config.adapter,
+    addCheckBox: state.workspace.addCheckBox,
+    manifest: getManifestoInstance(state,{manifestId:manifestId}),
+    manifestId,
+    projectId: state.config.projectId,
+    removeResourceButton: state.workspace.removeResourceButton,
   };
 }
 
@@ -32,7 +39,6 @@ const mapDispatchToProps = {
   onDismissClick: actions.removeResource,
   removeWindow: actions.removeWindow,
   updateWorkspaceMosaicLayout: actions.updateWorkspaceMosaicLayout,
-
 };
 
 const styles = (theme) => ({
