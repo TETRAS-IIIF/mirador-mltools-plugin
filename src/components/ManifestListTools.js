@@ -18,13 +18,12 @@ const ManifestListTools = (
         updateWorkspaceMosaicLayout,
         classes,
         removeResourceButton,
+        adapter,
     }) => {
     const addWindowHandler = () => {
         addWindow({ manifestId });
     };
 
-    console.log('addCheckBox',addCheckBox)
-    console.log('removeResourceButton',removeResourceButton)
     const removeWindowHandler = () => {
         activeWindows.forEach((windowId) => {
             removeWindow(windowId);
@@ -40,6 +39,8 @@ const ManifestListTools = (
     };
 
     const removeManifestHandler = () => {
+        const storageAdapter = adapter("tptp")
+        storageAdapter.delete();
         activeWindows.forEach((windowId) => {
             removeWindow(windowId);
         });
@@ -104,6 +105,7 @@ ManifestListTools.propTypes = {
     active: PropTypes.bool,
     activeWindows: PropTypes.arrayOf(PropTypes.string),
     addCheckBox: PropTypes.bool.isRequired,
+    adapter: PropTypes.any.isRequired,
     manifestId: PropTypes.string.isRequired,
     onDismissClick: PropTypes.func.isRequired,
     removeWindow: PropTypes.func.isRequired,

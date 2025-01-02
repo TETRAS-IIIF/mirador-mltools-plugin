@@ -1,8 +1,10 @@
 import mirador from 'mirador/dist/es/src/index';
 import manifestlistPlugins from '../../src';
+import LocalStorageAdapter from "./adapter/LocalStorageAdapter";
 
 const config = {
-  id: 'demo',
+  adapter:(canvasId) => new LocalStorageAdapter(`localStorage://?canvasId=${canvasId}`),
+    id: 'demo',
   catalog: [{
     manifestId: 'https://iiif.harvardartmuseums.org/manifests/object/299843',
   }],

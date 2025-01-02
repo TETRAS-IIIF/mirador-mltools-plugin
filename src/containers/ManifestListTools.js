@@ -10,8 +10,6 @@ function mapStateToProps(state, { manifestId }) {
   const windowIds = getWindowIds(state);
   const activeWindowIds = [];
 
-  console.log('state',state);
-
   windowIds.forEach((value) => {
     const manifest = getManifest(state, { windowId: value });
     if (manifest && manifest.id === manifestId) {
@@ -24,7 +22,8 @@ function mapStateToProps(state, { manifestId }) {
     activeWindows: activeWindowIds,
     manifestId,
     addCheckBox: state.workspace.addCheckBox,
-    removeResourceButton: state.workspace.removeResourceButton
+    removeResourceButton: state.workspace.removeResourceButton,
+    adapter: state.config.adapter,
   };
 }
 
