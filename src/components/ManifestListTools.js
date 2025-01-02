@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Tooltip, Typography } from '@mui/material';
+import {Box, Button, Tooltip, Typography} from '@mui/material';
 import CheckBoxOutlined from '@mui/icons-material/CheckBoxOutlined';
 import CheckBoxOutlineBlank from '@mui/icons-material/CheckBoxOutlineBlank';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const ManifestListTools = (
     {
@@ -49,7 +50,7 @@ const ManifestListTools = (
     };
 
     return (
-        <>
+        <Box alignContent="center" justifyContent="center">
             <Tooltip title={active ? t('window_remove') : t('window_add')}>
                 <Button
                     className={classes.windowAddRemove}
@@ -58,11 +59,12 @@ const ManifestListTools = (
                     {active ? <CheckBoxOutlined /> : <CheckBoxOutlineBlank />}
                 </Button>
             </Tooltip>
-
-            <Button className={classes.manifestRemove} onClick={removeManifestHandler}>
-                <Typography variant="body1">{t('manifest_remove')}</Typography>
-            </Button>
-        </>
+            <Tooltip title={t('manifest_remove')}>
+                <Button className={classes.manifestRemove} onClick={removeManifestHandler}>
+                    <DeleteIcon/>
+                </Button>
+            </Tooltip>
+        </Box>
     );
 };
 
