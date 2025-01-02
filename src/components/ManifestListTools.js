@@ -50,18 +50,38 @@ const ManifestListTools = (
     };
 
     return (
-        <Box alignContent="center" justifyContent="center">
+        <Box
+            display="flex"
+            alignItems="center"
+            justifyContent="space-between"
+            gap={2}
+            width="100%"
+        >
             <Tooltip title={active ? t('window_remove') : t('window_add')}>
                 <Button
                     className={classes.windowAddRemove}
                     onClick={active ? removeWindowHandler : addWindowHandler}
+                    sx={{
+                        minWidth: '40px',
+                        minHeight: '40px',
+                        padding: 0,
+                    }}
                 >
                     {active ? <CheckBoxOutlined /> : <CheckBoxOutlineBlank />}
                 </Button>
             </Tooltip>
             <Tooltip title={t('manifest_remove')}>
-                <Button className={classes.manifestRemove} onClick={removeManifestHandler}>
-                    <DeleteIcon/>
+                <Button
+                    className={classes.manifestRemove}
+                    onClick={removeManifestHandler}
+                    sx={{
+                        minWidth: '40px',
+                        minHeight: '40px',
+                        padding: 0,
+                    }}
+                    color="error"
+                >
+                    <DeleteIcon />
                 </Button>
             </Tooltip>
         </Box>
