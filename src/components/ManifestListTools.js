@@ -12,8 +12,9 @@ const ManifestListTools = (
         adapter,
         addCheckBox,
         addWindow,
+        canvases,
         manifestId,
-        manifest,
+        onDismissClick,
         projectId,
         removeWindow,
         t,
@@ -41,36 +42,21 @@ const ManifestListTools = (
 
     const removeManifestHandler = () => {
         // Initialize an empty array to hold canvas IDs
-        const canvasIds = [];
-        console.log(projectId);
-        // Iterate over the canvases in the `sequences` array
-        if (manifest.__jsonld && manifest.__jsonld.sequences) {
-            manifest.__jsonld.sequences.forEach(sequence => {
-                if (sequence.canvases) {
-                    sequence.canvases.forEach(canvas => {
-                        if (canvas["@id"]) {
-                            canvasIds.push(canvas["@id"]);
-                        }
-                    });
-                }
-            });
-        }
-        console.log('canvasIds',canvasIds);
-        for(const canvasId of canvasIds) {
-        const storageAdapter = adapter(canvasId, projectId)
+        for(const canvas of canvases) {
+        const storageAdapter = adapter(canvas.id, projectId)
         storageAdapter.delete();
         }
-        // activeWindows.forEach((windowId) => {
-        //     removeWindow(windowId);
-        // });
-        // /**
-        //  * Duplicate, see above
-        //  * */
-        // if (activeWindows.length > 0) {
-        //     updateWorkspaceMosaicLayout();
-        // }
-        //
-        // onDismissClick(manifestId);
+        activeWindows.forEach((windowId) => {
+            removeWindow(windowId);
+        });
+        /**
+         * Duplicate, see above
+         * */
+        if (activeWindows.length > 0) {
+            updateWorkspaceMosaicLayout();
+        }
+
+        onDismissClick(manifestId);
     };
 
     return (

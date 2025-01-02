@@ -7,7 +7,7 @@ import {
   getWindowIds,
   getManifest,
   getWindowManifests,
-  getManifestoInstance,
+  getManifestoInstance, getCanvases,
 } from 'mirador/dist/es/src/state/selectors';
 import ManifestListTools from '../components/ManifestListTools';
 
@@ -27,7 +27,7 @@ function mapStateToProps(state, { manifestId }) {
     activeWindows: activeWindowIds,
     adapter: state.config.annotation.adapter,
     addCheckBox: state.workspace.addCheckBox,
-    manifest: getManifestoInstance(state,{manifestId:manifestId}),
+    canvases: getCanvases(state,{manifestId}),
     manifestId,
     projectId: state.config.projectId,
     removeResourceButton: state.workspace.removeResourceButton,
