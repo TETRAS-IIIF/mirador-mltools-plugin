@@ -1,7 +1,7 @@
 {
-  "name": "mirador-mltools-plugin",
-  "version": "0.0.5",
-  "description": "mirador-mltools-plugin React component",
+  "name": "mirador-mltools-plugin-mmu",
+  "version": "0.0.11",
+  "description": "mirador-mltools-plugin React component for mirador-multi-user",
   "main": "lib/index.js",
   "module": "es/index.js",
   "files": [
@@ -28,28 +28,28 @@
     "test:ci": "jest --ci --reporters=default --reporters=jest-junit --watchAll=false"
   },
   "peerDependencies": {
-    "@mui/material": "^6.x",
+    "@mui/material": "^5.16.4",
     "@mui/styles": "^6.x",
-    "mirador": "^4.0.0-alpha.5",
+    "mirador": "npm:mirador-video@1.0.14",
     "prop-types": "^15.7.2",
-    "react": "18.x"
+    "react": "^18.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",
     "@babel/preset-env": "^7.26.0",
     "@babel/preset-react": "^7.26.3",
-    "@mui/material": "^6.3.0",
-    "@mui/styles": "^6.x",
+    "@mui/material": "^5.16.4",
+    "@mui/styled-engine-sc": "^6.0.0-alpha.18",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.15",
     "babel-loader": "^9.2.1",
     "css-loader": "^7.1.2",
     "file-loader": "^6.2.0",
     "html-loader": "^5.1.0",
     "html-webpack-plugin": "^5.6.3",
-    "mirador": "^4.0.0-alpha.5",
+    "mirador": "npm:mirador-video@1.0.14",
     "prop-types": "^15.7.2",
-    "react": "18.x",
-    "react-dom": "18.x",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "style-loader": "^4.0.0",
     "terser-webpack-plugin": "^5.3.11",
     "webpack": "^5.97.1",
@@ -68,6 +68,6 @@
     "@babel/plugin-proposal-optional-chaining": "^7.21.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
-    "@mui/icons-material": "^6.3.0"
+    "@mui/icons-material": "^5.15.15"
   }
 }

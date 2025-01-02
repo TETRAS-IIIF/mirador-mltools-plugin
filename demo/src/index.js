@@ -3,13 +3,15 @@ import manifestlistPlugins from '../../src';
 import LocalStorageAdapter from "./adapter/LocalStorageAdapter";
 
 const config = {
-  adapter:(canvasId,projectId) => new LocalStorageAdapter(`localStorage://?canvasId=${canvasId}`, projectId),
-    id: 'demo',
+  annotation:{
+    adapter:(canvasId,projectId) => new LocalStorageAdapter(`localStorage://?canvasId=${canvasId}`, projectId),
+  },
+  id: 'demo',
   catalog: [{
     manifestId: 'https://iiif.harvardartmuseums.org/manifests/object/299843',
   }],
   windows: [{
-      loadedManifest: 'https://iiif.harvardartmuseums.org/manifests/object/299843',
+    loadedManifest: 'https://iiif.harvardartmuseums.org/manifests/object/299843',
   }],
   workspace: {
     isWorkspaceAddVisible: true,

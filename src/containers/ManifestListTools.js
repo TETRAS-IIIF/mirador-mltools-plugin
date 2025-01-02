@@ -25,7 +25,7 @@ function mapStateToProps(state, { manifestId }) {
   return {
     active: getWindowManifests(state).includes(manifestId),
     activeWindows: activeWindowIds,
-    adapter: state.config.adapter,
+    adapter: state.config.annotation.adapter,
     addCheckBox: state.workspace.addCheckBox,
     manifest: getManifestoInstance(state,{manifestId:manifestId}),
     manifestId,
