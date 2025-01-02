@@ -11,7 +11,7 @@ export default {
   },
   fr: {
     manifest_remove: 'Supprimer la ressource',
-    window_add: 'Ajouter à la vue de la galerie',
-    window_remove: 'Retirer de la vue de la galerie',
+    window_add: 'Ajouter à l’espace de travail',
+    window_remove: 'Retirer de l’espace de travail',
   },
 };
