@@ -9,6 +9,7 @@ const ManifestListTools = (
     {
         active = false,
         activeWindows = [],
+        addCheckBox,
         addWindow,
         manifestId,
         onDismissClick,
@@ -16,11 +17,14 @@ const ManifestListTools = (
         t,
         updateWorkspaceMosaicLayout,
         classes,
+        removeResourceButton,
     }) => {
     const addWindowHandler = () => {
         addWindow({ manifestId });
     };
 
+    console.log('addCheckBox',addCheckBox)
+    console.log('removeResourceButton',removeResourceButton)
     const removeWindowHandler = () => {
         activeWindows.forEach((windowId) => {
             removeWindow(windowId);
@@ -57,33 +61,41 @@ const ManifestListTools = (
             gap={2}
             width="100%"
         >
-            <Tooltip title={active ? t('window_remove') : t('window_add')}>
-                <Button
-                    className={classes.windowAddRemove}
-                    onClick={active ? removeWindowHandler : addWindowHandler}
-                    sx={{
-                        minWidth: '40px',
-                        minHeight: '40px',
-                        padding: 0,
-                    }}
-                >
-                    {active ? <CheckBoxOutlined /> : <CheckBoxOutlineBlank />}
-                </Button>
-            </Tooltip>
-            <Tooltip title={t('manifest_remove')}>
-                <Button
-                    className={classes.manifestRemove}
-                    onClick={removeManifestHandler}
-                    sx={{
-                        minWidth: '40px',
-                        minHeight: '40px',
-                        padding: 0,
-                    }}
-                    color="error"
-                >
-                    <DeleteIcon />
-                </Button>
-            </Tooltip>
+            {
+                addCheckBox &&(
+                    <Tooltip title={active ? t('window_remove') : t('window_add')}>
+                        <Button
+                            className={classes.windowAddRemove}
+                            onClick={active ? removeWindowHandler : addWindowHandler}
+                            sx={{
+                                minWidth: '40px',
+                                minHeight: '40px',
+                                padding: 0,
+                            }}
+                        >
+                            {active ? <CheckBoxOutlined /> : <CheckBoxOutlineBlank />}
+                        </Button>
+                    </Tooltip>
+                )
+            }
+            {
+                removeResourceButton && (
+                    <Tooltip title={t('manifest_remove')}>
+                        <Button
+                            className={classes.manifestRemove}
+                            onClick={removeManifestHandler}
+                            sx={{
+                                minWidth: '40px',
+                                minHeight: '40px',
+                                padding: 0,
+                            }}
+                            color="error"
+                        >
+                            <DeleteIcon />
+                        </Button>
+                    </Tooltip>
+                )
+            }
         </Box>
     );
 };
@@ -91,6 +103,7 @@ const ManifestListTools = (
 ManifestListTools.propTypes = {
     active: PropTypes.bool,
     activeWindows: PropTypes.arrayOf(PropTypes.string),
+    addCheckBox: PropTypes.bool.isRequired,
     manifestId: PropTypes.string.isRequired,
     onDismissClick: PropTypes.func.isRequired,
     removeWindow: PropTypes.func.isRequired,
@@ -101,6 +114,7 @@ ManifestListTools.propTypes = {
         windowAddRemove: PropTypes.string,
         manifestRemove: PropTypes.string,
     }).isRequired,
+    removeResourceButton: PropTypes.bool.isRequired,
 };
 
 export default ManifestListTools;

@@ -11,6 +11,8 @@ const config = {
   }],
   workspace: {
     isWorkspaceAddVisible: true,
+    addCheckBox:true,
+    removeResourceButton: true,
   }
 };
 

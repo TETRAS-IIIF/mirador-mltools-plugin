@@ -10,6 +10,8 @@ function mapStateToProps(state, { manifestId }) {
   const windowIds = getWindowIds(state);
   const activeWindowIds = [];
 
+  console.log('state',state);
+
   windowIds.forEach((value) => {
     const manifest = getManifest(state, { windowId: value });
     if (manifest && manifest.id === manifestId) {
@@ -21,6 +23,8 @@ function mapStateToProps(state, { manifestId }) {
     active: getWindowManifests(state).includes(manifestId),
     activeWindows: activeWindowIds,
     manifestId,
+    addCheckBox: state.workspace.addCheckBox,
+    removeResourceButton: state.workspace.removeResourceButton
   };
 }
 
@@ -29,6 +33,7 @@ const mapDispatchToProps = {
   onDismissClick: actions.removeResource,
   removeWindow: actions.removeWindow,
   updateWorkspaceMosaicLayout: actions.updateWorkspaceMosaicLayout,
+
 };
 
 const styles = (theme) => ({
