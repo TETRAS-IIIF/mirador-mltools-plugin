@@ -41,26 +41,8 @@ const mapDispatchToProps = {
   updateWorkspaceMosaicLayout: actions.updateWorkspaceMosaicLayout,
 };
 
-const styles = (theme) => ({
-  windowAddRemove: {
-    position: 'absolute',
-    right: '0',
-    top: '0',
-    padding: '5px',
-    minWidth: '0',
-  },
-  manifestRemove: {
-    position: 'absolute',
-    right: '0',
-    bottom: '0',
-    padding: '0 5px',
-    textTransform: 'none',
-  },
-});
-
 const enhance = compose(
     withTranslation(),
-    withStyles(styles),
     connect(mapStateToProps, mapDispatchToProps)
 );
 

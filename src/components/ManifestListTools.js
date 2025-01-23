@@ -19,9 +19,9 @@ const ManifestListTools = (
         removeWindow,
         t,
         updateWorkspaceMosaicLayout,
-        classes,
         removeResourceButton,
     }) => {
+
     const addWindowHandler = () => {
         addWindow({ manifestId });
     };
@@ -63,6 +63,7 @@ const ManifestListTools = (
         <Box
             display="flex"
             alignItems="center"
+            flexDirection="column"
             justifyContent="space-between"
             gap={2}
             width="100%"
@@ -71,7 +72,6 @@ const ManifestListTools = (
                 addCheckBox &&(
                     <Tooltip title={active ? t('window_remove') : t('window_add')}>
                         <Button
-                            className={classes.windowAddRemove}
                             onClick={active ? removeWindowHandler : addWindowHandler}
                             sx={{
                                 minWidth: '40px',
@@ -88,7 +88,6 @@ const ManifestListTools = (
                 removeResourceButton && (
                     <Tooltip title={t('manifest_remove')}>
                         <Button
-                            className={classes.manifestRemove}
                             onClick={removeManifestHandler}
                             sx={{
                                 minWidth: '40px',
@@ -118,10 +117,6 @@ ManifestListTools.propTypes = {
     t: PropTypes.func.isRequired,
     updateWorkspaceMosaicLayout: PropTypes.func.isRequired,
     addWindow: PropTypes.func.isRequired,
-    classes: PropTypes.shape({
-        windowAddRemove: PropTypes.string,
-        manifestRemove: PropTypes.string,
-    }).isRequired,
     removeResourceButton: PropTypes.bool.isRequired,
 };
 

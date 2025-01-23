@@ -6,9 +6,11 @@ const ManifestListItem = ({ TargetComponent, targetProps }) => {
     return (
         <Box
             display="flex"
-            flexDirection="column"
+            flexDirection="row"
+            justifyContent="space-between"
+            alignItems="center"
         >
-            <Box>
+            <Box sx={{flexGrow: 1}}>
                 <TargetComponent {...targetProps} />
             </Box>
             <Box>
