@@ -46,7 +46,7 @@
     "file-loader": "^6.2.0",
     "html-loader": "^5.1.0",
     "html-webpack-plugin": "^5.6.3",
-    "mirador": "npm:mirador-video@1.0.14",
+    "mirador": "npm:mirador-video@1.0.15",
     "prop-types": "^15.7.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
