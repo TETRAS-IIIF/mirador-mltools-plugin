@@ -1,6 +1,6 @@
 {
   "name": "mirador-mltools-plugin-mmu",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "mirador-mltools-plugin React component for mirador-multi-user",
   "main": "lib/index.js",
   "module": "es/index.js",
