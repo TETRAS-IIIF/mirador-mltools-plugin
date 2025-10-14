@@ -1,14 +1,13 @@
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withTranslation } from 'react-i18next';
-import { withStyles } from '@mui/styles';
-import * as actions from 'mirador/dist/es/src/state/actions';
+import * as actions from 'mirador';
 import {
   getWindowIds,
   getManifest,
   getWindowManifests,
-  getManifestoInstance, getCanvases,
-} from 'mirador/dist/es/src/state/selectors';
+  getCanvases,
+} from 'mirador';
 import ManifestListTools from '../components/ManifestListTools';
 
 function mapStateToProps(state, { manifestId }) {

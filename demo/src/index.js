@@ -1,4 +1,4 @@
-import mirador from 'mirador/dist/es/src/index';
+import Mirador from 'mirador';
 import manifestlistPlugins from '../../src';
 import LocalStorageAdapter from "./adapter/LocalStorageAdapter";
 
@@ -21,4 +21,4 @@ const config = {
   projectId:1,
 };
 
-mirador.viewer(config, [...manifestlistPlugins]);
+Mirador.viewer(config, [...manifestlistPlugins]);
