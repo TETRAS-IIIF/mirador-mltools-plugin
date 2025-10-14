@@ -2,59 +2,57 @@
   "name": "mirador-mltools-plugin-mmu",
   "version": "0.0.16",
   "description": "mirador-mltools-plugin React component for mirador-multi-user",
-  "main": "lib/index.js",
-  "module": "es/index.js",
+  "main": "es/index.js",
+  "module": "./dist/mirador-annotation-editor.es.js",
   "files": [
-    "css",
-    "es",
-    "lib",
-    "umd"
+    "dist"
   ],
-  "scripts": {
-    "build": "npm run build:es",
-    "build:umd": "NODE_ENV=production webpack --mode=production",
-    "build:es": "mkdir -p es && cp -r src/* es && NODE_ENV=production MODULE_FORMAT=es npx babel es -d es",
-    "build:cjs": "mkdir -p lib && cp -r src/* lib && NODE_ENV=production MODULE_FORMAT=cjs npx babel lib -d lib",
-    "build:demo": "NODE_ENV=development webpack --mode=development",
-    "clean": "rm -rf ./umd && rm -rf ./es && rm -rf ./lib && rm -rf ./demo/dist",
-    "clean-deps": "rm -rf package-lock.json && rm -rf node_modules",
-    "lint": "eslint ./src ./__tests__",
-    "prepare": "npm run build",
-    "prepublishOnly": "npm run clean && npm run build:es",
-    "start": "NODE_ENV=development webpack serve --open",
-    "test": "npm run lint && jest",
-    "test:coverage": "jest --coverage",
-    "test:watch": "jest --watch",
-    "test:ci": "jest --ci --reporters=default --reporters=jest-junit --watchAll=false"
+  "exports": {
+    "./src": "./src/index.js"
   },
+  "scripts": {
+    "prepare": "npm run build",
+    "build": "vite build --config vite.config.js",
+    "clean": "rm -rf ./dist && rm -rf node_modules",
+    "lint": "npx eslint ./",
+    "prepublishOnly": "npm run build",
+    "start": "vite",
+    "test": "npx vitest run",
+    "test:coverage": "npm run lint && npx vitest run --coverage"
+  },
+  "contributors": [
+    "Anthony Geourjon <anthony.geourjon@tetras-libre.fr> (https://www.tetras-libre.fr)",
+    "David Rouquet <david.rouquet@tetras-libre.fr> (https://www.tetras-libre.fr)",
+    "Antoine Roy <antoine.roy@tetras-libre.fr> (https://www.tetras-libre.fr)"
+  ],
   "peerDependencies": {
-    "@mui/material": "^5.16.4",
-    "@mui/styles": "^6.x",
-    "mirador": "npm:mirador-video@1.0.14",
+    "@mui/material": "^7.0.0",
+    "mirador": "npm:mirador-video@1.2.1",
     "prop-types": "^15.7.2",
-    "react": "^18.2.0"
+    "react": "^19.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",
     "@babel/preset-env": "^7.26.0",
     "@babel/preset-react": "^7.26.3",
-    "@mui/material": "^5.16.4",
-    "@mui/styled-engine-sc": "^6.0.0-alpha.18",
-    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.15",
+    "@mui/material": "^7.0.0",
+    "@vitejs/plugin-react": "^4.7.0",
     "babel-loader": "^9.2.1",
     "css-loader": "^7.1.2",
     "file-loader": "^6.2.0",
     "html-loader": "^5.1.0",
-    "html-webpack-plugin": "^5.6.3",
-    "mirador": "npm:mirador-video@1.0.15",
     "prop-types": "^15.7.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "style-loader": "^4.0.0",
-    "terser-webpack-plugin": "^5.3.11",
-    "webpack": "^5.97.1",
-    "webpack-cli": "^6.0.1",
-    "webpack-dev-server": "^5.2.0"
+    "vite": "^6.0.0"
+  },
+  "dependencies": {
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.18.6",
+    "@babel/plugin-proposal-optional-chaining": "^7.21.0",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^7.0.0"
   },
   "author": "",
   "homepage": "",
@@ -62,12 +60,5 @@
   "repository": "",
   "keywords": [
     "react-component"
-  ],
-  "dependencies": {
-    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.18.6",
-    "@babel/plugin-proposal-optional-chaining": "^7.21.0",
-    "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.0",
-    "@mui/icons-material": "^5.15.15"
-  }
+  ]
 }
