@@ -1,7 +1,7 @@
 {
   "name": "mirador-mltools-plugin-mmu",
-  "version": "1.0.0",
-  "description": "mirador-mltools-plugin React component for mirador-multi-user, M4 compatible",
+  "version": "1.0.1",
+  "description": "Mirador 4 plugin as React component, add feature on manifest lists.",
   "main": "es/index.js",
   "module": "./dist/mirador-annotation-editor.es.js",
   "files": [
