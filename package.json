@@ -28,7 +28,7 @@
   ],
   "peerDependencies": {
     "@mui/material": "^7.0.0",
-    "mirador": "npm:mirador-video@1.2.1",
+    "mirador": "npm:mirador-video@^1.2.2",
     "prop-types": "^15.7.2",
     "react": "^19.0.0"
   },
