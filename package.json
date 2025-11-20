@@ -3,7 +3,7 @@
   "version": "1.0.3",
   "description": "Mirador 4 plugin as React component, add feature on manifest lists.",
   "main": "es/index.js",
-  "module": "./dist/mirador-annotation-editor.es.js",
+  "module": "./dist/mirador-mltools-plugin.es.js",
   "files": [
     "dist"
   ],
