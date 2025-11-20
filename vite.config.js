@@ -28,10 +28,7 @@ export default defineConfig({
       build: {
         lib: {
           entry: "./src/index.js",
-          fileName: (format) =>
-            format === "umd"
-              ? `${pkg.name}.js`
-              : `${pkg.name}.es.js`,
+          fileName: (format) => (format === 'umd' ? 'mirador-mltools-plugin.js' : 'mirador-mltools-plugin.es.js'), // TODO it's not safe to hardcode this with different name than package name
           formats: ["es", "umd"],
           name: safeName,
         },
