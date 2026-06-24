@@ -31,13 +31,13 @@ jobs:
 
       # --- checkout both branches ---
       - name: Checkout stable (demo)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           ref: demo
           path: demo_src
 
       - name: Checkout latest (main)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           ref: main
           path: main_src
