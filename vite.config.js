@@ -18,7 +18,11 @@ export default defineConfig({
         outDir: "dist",
         emptyOutDir: true,
         rollupOptions: {
-          external: ["__tests__/*", "__mocks__/*"],
+          external: [
+            ...Object.keys(pkg.peerDependencies || {}),
+            "__tests__/*",
+            "__mocks__/*",
+          ],
           input: fileURLToPath(new URL("./demo/src/index.html", import.meta.url)),
         },
         sourcemap: true,
