@@ -6,7 +6,7 @@ import fs from 'fs/promises';
 export default defineConfig({
   esbuild: {
     exclude: [],
-    include: /(src|__tests__)\/.*\.jsx?$/,
+    include: /(src|tests|__tests__)\/.*\.jsx?$/,
     loader: 'jsx',
   },
   optimizeDeps: {
@@ -16,7 +16,7 @@ export default defineConfig({
           name: 'load-js-files-as-jsx',
 
           setup(build) {
-            build.onLoad({ filter: /(src|__tests__)\/.*\.js$/ }, async (args) => ({
+            build.onLoad({ filter: /(src|tests|__tests__)\/.*\.js$/ }, async (args) => ({
               contents: await fs.readFile(args.path, 'utf8'),
               loader: 'jsx',
             }));
@@ -32,14 +32,10 @@ export default defineConfig({
     },
   },
   test: {
-    coverage: {
-      all: true,
-      enabled: true,
-    },
     environment: 'happy-dom',
     exclude: ['node_modules'],
     globals: true,
-    include: ['**/*.test.js', '**/*.test.jsx'],
+    include: ['tests/**/*.test.js', 'tests/**/*.test.jsx'],
     sequence: {
       shuffle: true,
     },
