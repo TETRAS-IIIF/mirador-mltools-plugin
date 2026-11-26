@@ -4,6 +4,14 @@ import fs from "fs/promises";
 import { fileURLToPath } from "url";
 import pkg from "./package.json";
 
+// Libraries the host app (Mirador / MMU) provides: never bundled, deep
+// imports included (@mui/icons-material/Delete, react/jsx-runtime...), so the
+// plugin uses the host's React, Redux, i18n, Emotion and MUI instances.
+const hostPackages = Object.keys(pkg.peerDependencies || {});
+const isExternal = (id) =>
+  hostPackages.some((name) => id === name || id.startsWith(`${name}/`)) ||
+  /^(__tests__|__mocks__)\//.test(id);
+
 const safeName = pkg.name.replace(/[^a-zA-Z0-9]/g, "");
 const baseName = pkg.name.startsWith("/") ? pkg.name : `/${pkg.name}/`;
 
@@ -18,11 +26,7 @@ export default defineConfig({
         outDir: "dist",
         emptyOutDir: true,
         rollupOptions: {
-          external: [
-            ...Object.keys(pkg.peerDependencies || {}),
-            "__tests__/*",
-            "__mocks__/*",
-          ],
+          external: isExternal,
           input: fileURLToPath(new URL("./demo/src/index.html", import.meta.url)),
         },
         sourcemap: true,
@@ -37,11 +41,7 @@ export default defineConfig({
           name: safeName,
         },
         rollupOptions: {
-          external: [
-            ...Object.keys(pkg.peerDependencies || {}),
-            "__tests__/*",
-            "__mocks__/*",
-          ],
+          external: isExternal,
           output: {
             assetFileNames: `${pkg.name}.[ext]`,
           },

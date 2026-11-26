@@ -6,10 +6,20 @@ Demo available here : https://tetras-iiif.github.io/mirador-mltools-plugin/
 ## Installing `mirador-mltools-plugin`
 `mirador-mltools-plugin` requires an instance of Mirador 4. See the [Mirador wiki](https://github.com/ProjectMirador/mirador/wiki) for examples of embedding Mirador within an application. See the [demo's index.js](https://github.com/slub/mirador-mltools-plugin/blob/main/demo/src/index.js) for an example of importing the `mirador-mltools-plugin`.
 
+The plugin bundles none of the libraries Mirador already brings: React, Redux (`redux`, `react-redux`), `react-i18next`, Emotion, MUI and `@mui/icons-material` are peer dependencies, so it uses the host's instances. It works with MUI 7 (`mirador-video` 4.2) and MUI 9 (`mirador-video` 4.3).
+
+## Development
+
+```bash
+npm install
+npm test        # Vitest
+npm run build   # dist/
+```
+
 # Fork 
 
 This repo is a fork from https://github.com/slub/mirador-mltools-plugin
-- We add the M4 support (R19, MUI7, Vite build)
+- We add the M4 support (R19, MUI 7 and 9, Vite build)
 - We improve UI 
 - We add GitHub actions to auto deploy demos (GitHub pages, with stable and latest)
 
