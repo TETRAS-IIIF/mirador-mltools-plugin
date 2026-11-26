@@ -1,6 +1,6 @@
 {
   "name": "mirador-mltools-plugin-mmu",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Mirador 4 plugin as React component, add feature on manifest lists.",
   "main": "es/index.js",
   "module": "./dist/mirador-mltools-plugin.es.js",
