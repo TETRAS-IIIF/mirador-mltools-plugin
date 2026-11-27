@@ -5,10 +5,12 @@ import {Box} from "@mui/material";
 const ManifestListItem = ({ TargetComponent, targetProps }) => {
     return (
         <Box
-            display="flex"
-            flexDirection="row"
-            justifyContent="space-between"
-            alignItems="center"
+            sx={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+            }}
         >
             <Box sx={{flexGrow: 1}}>
                 <TargetComponent {...targetProps} />

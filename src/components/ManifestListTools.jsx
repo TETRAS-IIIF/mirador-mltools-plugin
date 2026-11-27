@@ -61,12 +61,14 @@ const ManifestListTools = (
 
     return (
         <Box
-            display="flex"
-            alignItems="center"
-            flexDirection="column"
-            justifyContent="space-between"
-            gap={2}
-            width="100%"
+            sx={{
+                display: 'flex',
+                alignItems: 'center',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                gap: 2,
+                width: '100%',
+            }}
         >
             {
                 addCheckBox &&(
